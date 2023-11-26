@@ -1,0 +1,44 @@
+{
+  "tasks": {
+    "check": "deno fmt --check && deno lint && deno check **/*.ts **/*.js",
+    "test": "rm -rf coverage && deno test -A --unstable --coverage=coverage && deno coverage coverage --lcov --output=coverage/lcov.info --exclude='test/**/*' && genhtml -o coverage/html --ignore-errors unmapped coverage/lcov.info > /dev/null",
+    "ci": "deno test --unstable -A --coverage=coverage && deno coverage coverage --lcov --output=coverage/lcov.info"
+  },
+  "imports": {
+    "$cliffy/": "https://deno.land/x/cliffy@v1.0.0-rc.3/",
+    "$std/": "https://deno.land/std@0.208.0/"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "exclude": ["woords/phdef.js", "deno_modules/"]
+  },
+  "lint": {
+    "exclude": ["woords/phdef.js", "deno_modules/"],
+    "rules": {
+      "tags": ["fresh", "recommended"],
+      "exclude": ["no-await-in-loop"],
+      "include": [
+        "ban-untagged-todo",
+        "camelcase",
+        "default-param-last",
+        "eqeqeq",
+        "explicit-function-return-type",
+        "explicit-module-boundary-types",
+        "guard-for-in",
+        "no-const-assign",
+        "no-eval",
+        "no-external-import",
+        "no-implicit-declare-namespace-export",
+        "no-non-null-asserted-optional-chain",
+        "no-sparse-arrays",
+        "no-sync-fn-in-async-fn",
+        "no-throw-literal"
+      ]
+    }
+  }
+}
