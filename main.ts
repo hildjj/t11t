@@ -3,8 +3,9 @@
 import {
   Command,
   CompletionsCommand,
+  parseJSONC,
   ValidationError,
-} from '$cliffy/command/mod.ts';
+} from './deps.ts';
 import { VERSION } from './version.ts';
 import type {
   Collection,
@@ -14,7 +15,6 @@ import type {
   TRequest,
 } from './types.ts';
 import { TTree } from './tree.ts';
-import { parse as parseJSONC } from '$std/jsonc/parse.ts';
 
 const env: Record<string, string> = {};
 const CURLIES = /{{((?:(?!}}).)*)}}/;

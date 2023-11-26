@@ -51,20 +51,20 @@ export class TTree {
     this.#children.sort((a, b) =>
       (a.#info?.sortNum ?? Infinity) - (b.#info?.sortNum ?? Infinity)
     );
-    this.#children.forEach(c => c.sort());
+    this.#children.forEach((c) => c.sort());
   }
 
   toString(): string {
     let res = '';
     if (this.#info) {
       res += ''.padEnd((this.#depth - 1) * 2);
-      const fold = isFolder(this.#info)
+      const fold = isFolder(this.#info);
       if (fold) {
-        res += '['
+        res += '[';
       }
       res += this.#info.name;
       if (fold) {
-        res += ']'
+        res += ']';
       }
       if (!fold) {
         res += ': ';
